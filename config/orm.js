@@ -1,7 +1,7 @@
-var connection = require("../config/connection.js");
+const connection = require("../config/connection");
 
 function printQuestionMarks(num) {
-  var arr = [];
+  let arr = [];
 
   for (var i = 0; i < num; i++) {
     arr.push("?");
@@ -10,12 +10,11 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
-function objToSql(ob) {
-  var arr = [];
+function objectToSQL(ob) {
+  let arr = [];
 
   for (var key in ob) {
-    var value = ob[key];
-
+    let value = ob[key];
     if (Object.hasOwnProperty.call(ob, key)) {
       if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
@@ -28,9 +27,9 @@ function objToSql(ob) {
   return arr.toString();
 }
 
-var orm = {
-  all: function (tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
+let orm = {
+  selectBurgers: function (tableInput, cb) {
+    let queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
       if (err) {
         throw err;
@@ -38,19 +37,20 @@ var orm = {
       cb(result);
     });
   },
-  create: function (table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+
+  insertBurger: function (table, columns, values, cb) {
+    let queryString = "INSERT INTO " + table;
 
     queryString += " (";
-    queryString += cols.toString();
+    queryString += columns.toString();
     queryString += ") ";
     queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
+    queryString += printQuestionMarks(values.length);
     queryString += ") ";
 
-    console.log(queryString);
+    console.log("Create query string:" + queryString);
 
-    connection.query(queryString, vals, function (err, result) {
+    connection.query(queryString, values, function (err, result) {
       if (err) {
         throw err;
       }
@@ -59,20 +59,34 @@ var orm = {
     });
   },
 
-  update: function (table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
+  updateBurger: function (table, objectColVals, id, cb) {
+    let queryString = "UPDATE " + table;
 
     queryString += " SET ";
-    queryString += objToSql(objColVals);
+    queryString += objectToSQL(objectColVals);
     queryString += " WHERE ";
-    queryString += condition;
+    queryString += objectToSQL(id);
 
     console.log(queryString);
+    console.log(id);
+
     connection.query(queryString, function (err, result) {
       if (err) {
         throw err;
       }
 
+      cb(result);
+    });
+  },
+
+  deleteBurger: function (table, id, cb) {
+    let querySelect = "DELET FROM " + table + " WHERE " + id;
+    console.log(querySelect);
+
+    connection.query(querySelect, function (err, result) {
+      if (err) {
+        throw err;
+      }
       cb(result);
     });
   },

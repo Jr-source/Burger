@@ -1,0 +1,19 @@
+li {
+    padding: 5px;
+    margin: 5px;
+    background: #f0ae57;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .create-update-form {
+    padding: 5px;
+    margin: 5px;
+    background: rgb(125, 164, 247);
+  }
+  
+  .form-group {
+    margin-bottom: 5px;
+  }

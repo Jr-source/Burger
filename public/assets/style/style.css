@@ -1,19 +1,50 @@
-li {
-    padding: 5px;
-    margin: 5px;
-    background: #f0ae57;
+body {
+    font-family: "Arial Narrow";
+    background-color: white;
   }
   
-  .label {
-    font-weight: bold;
+  section {
+    justify-content: center;
+    padding: 1rem;
   }
   
-  .create-update-form {
-    padding: 5px;
-    margin: 5px;
-    background: rgb(125, 164, 247);
+  header {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
   
-  .form-group {
-    margin-bottom: 5px;
+  aside {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  aside li {
+    direction: ltr;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .make-burger {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+  
+  .devour-button {
+    background-color: brown;
+    color: white;
+    padding: 0.25rem;
+    margin: 0.25rem;
+  }
+  
+  #burger {
+    margin-bottom: 1rem;
   }

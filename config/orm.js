@@ -1,4 +1,4 @@
-const connection = require("../config/connection");
+const connection = require("../config/conncection");
 
 function printQuestionMarks(num) {
   let arr = [];
@@ -80,7 +80,7 @@ let orm = {
   },
 
   deleteBurger: function (table, id, cb) {
-    let querySelect = "DELET FROM " + table + " WHERE " + id;
+    let querySelect = "DELETE FROM " + table + " WHERE " + id;
     console.log(querySelect);
 
     connection.query(querySelect, function (err, result) {

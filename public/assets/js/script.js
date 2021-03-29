@@ -20,7 +20,7 @@ $(function () {
     });
   });
 });
-
+// 2nd function only need one. Getting error 500 when "submit" is clicked.
 $(function () {
   $(".make-burger").on("submit", function (event) {
     event.preventDefault();

@@ -39,7 +39,7 @@ let orm = {
   },
 
   insertBurger: function (table, columns, values, cb) {
-    let queryString = "INSERT INTO " + table;
+    let queryString = "INSERT INTO" + table;
 
     queryString += " (";
     queryString += columns.toString();
@@ -80,7 +80,7 @@ let orm = {
   },
 
   deleteBurger: function (table, id, cb) {
-    let querySelect = "DELETE FROM " + table + " WHERE " + id;
+    let querySelect = "DELETE FROM" + table + " WHERE " + id;
     console.log(querySelect);
 
     connection.query(querySelect, function (err, result) {

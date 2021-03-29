@@ -4,7 +4,7 @@ const burger = require("../../models/burger");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  burger.selectBurgers((data) => {
+  burger.all((data) => {
     const hbsObject = {
       burgers: data,
     };
@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/api/burgers", (req, res) => {
-  burger.insertBurger(
+  burger.create(
     ["burger_name", "devoured"],
     [req.body.name, req.body.devoured],
     (result) => {
@@ -31,7 +31,7 @@ router.put("/api/burgers/:id", (req, res) => {
   console.log(req.body);
   console.log(req.body.devoured);
 
-  burger.updateBurger({ devoured: true }, { id: id }, (result) => {
+  burger.update({ devoured: true }, { id: id }, (result) => {
     if (result.changeRows == 0) {
       return res.status(404).end();
     } else {
